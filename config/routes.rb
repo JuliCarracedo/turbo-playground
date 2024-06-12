@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   root 'home#home'
 
   get '/home', controller: 'home', action: 'home', as: 'home'
-  resources :posts, only: %i[index]
+  resources :posts, only: %i[index new create]
   resources :friends, only: %i[index]
 end

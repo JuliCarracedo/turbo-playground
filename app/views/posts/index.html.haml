@@ -1,3 +1,17 @@
 = turbo_frame_tag 'frame_1', data: { turbo_action: :replace } do
-  .font-bold.text-2xl= 'Posts'
-  .mt-12.italic= 'Here we will create many different posts to play with other turbo_actions'
+  .mt-4.font-bold.text-xl= 'Frame para Form (turbo_action: :replace)'
+  .w-full.border-blue-500.border-2.flex.flex-row.rounded-xl.mt-4.justify-center
+    = turbo_frame_tag 'new_post', data: { turbo_action: :replace } do
+      .w-full.flex.justify-between.items-center
+        .font-bold.text-2xl= 'Posts'
+        = link_to 'New Post', new_post_path, class: 'bg-blue-700 hover:bg-blue-500 rounded-xl shadow p-4 text-white', data: {turbo_frame: :new_post}
+      .mt-12.italic= 'Here we will create many different posts to play with other turbo_actions'
+  .mt-4.font-bold.text-xl= 'Frame para Posts (turbo_action: :prepend)'
+  .w-full.border-yellow-500.border-2.flex.flex-col.rounded-xl.mt-4.p-2
+    = link_to 'Reload', posts_path, class: 'text-gray-500 hover:underline', data: { turbo_frame: :posts }
+    = turbo_frame_tag 'posts', data: { turbo_action: :prepend } do
+      - if @posts.present?
+        - @posts.each do |post|
+          = render 'post', post:
+      - else
+        .w-full.text-center= 'There are no posts'
