@@ -2,12 +2,17 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order(id: :desc)
   end
+
   def new
     @post = Post.new
   end
+
   def create
     @post = Post.create(post_params)
-    redirect_to posts_path
+    respond_to do |format|
+      format.html { redirect_to quotes_path, notice: "Quote was successfully created." }
+      format.turbo_stream
+    end
   end
 
   private
