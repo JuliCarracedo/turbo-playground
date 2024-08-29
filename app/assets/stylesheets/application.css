@@ -41,6 +41,10 @@
   background: red;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 
 @keyframes appear-then-fade {
   0%, 100% {

@@ -1,4 +1,4 @@
-.bg-blue-500.text-white.flex.justify-center.items-center.w-full{ class: 'h-1/12' }
-  = link_to 'Homepage', root_path, class: 'hover:underline m-5', data: { 'turbo-frame': 'frame_1'}
-  = link_to 'Posts', posts_path, class: 'hover:underline m-5', data: { 'turbo-frame': 'frame_1'}
-  = link_to 'Friends', friends_path, class: 'hover:underline m-5', data: { 'turbo-frame': 'frame_1'}
+.bg-blue-500.text-white.flex.justify-center.items-center.w-full{ class: 'h-1/12', data: { controller: 'headers' } }
+  = link_to 'Homepage', root_path, class: 'navlink hover:underline m-5', data: { 'turbo-frame': 'frame_1', 'headers-target': 'home', action: 'click->headers#chooseLink'}
+  = link_to 'Posts', posts_path, class: 'navlink hover:underline m-5', data: { 'turbo-frame': 'frame_1', 'headers-target': 'posts', action: 'click->headers#chooseLink'}
+  = link_to 'Friends', friends_path, class: 'navlink hover:underline m-5', data: { 'turbo-frame': 'frame_1', 'headers-target': 'friends', action: 'click->headers#chooseLink'}
